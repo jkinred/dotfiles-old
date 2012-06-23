@@ -58,7 +58,7 @@ Linux)
         export JAVA_HOME=/usr/lib/jvm/java
         PATH=$PATH:$JAVA_HOME/bin
     fi
-    if [ -e /usr/share/terminfo/x/xterm-256color ]
+    if [ -e /usr/share/terminfo/x/xterm?256color ]
     then
         export TERM=xterm-256color
     else
