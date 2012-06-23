@@ -110,6 +110,7 @@ then
     alias gopsphere='cd ~/workspace/Personal/psphere'
     alias gopuppet='cd ~/workspace/Work/puppet'
     alias ipython="python -c 'import IPython; IPython.embed()'"
+    alias tree="tree --charset=ascii"
     export PYTHONPATH=$HOME/projects/Personal/psphere
 fi
 
