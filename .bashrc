@@ -1,3 +1,22 @@
+# Solarized colours
+NOCOLOR="\[\033[00m\]"
+BASE02="\[\033[30m\]"
+BASE03="\[\033[01;30m\]"
+RED="\[\033[31m\]"
+ORANGE="\[\033[01;31m\]"
+GREEN="\[\033[32m\]"
+BASE01="\[\033[01;32m\]"
+YELLOW="\[\033[33m\]"
+BASE00="\[\033[01;33m\]"
+BLUE="\[\033[34m\]"
+BASE0="\[\033[01;34m\]"
+MAGENTA="\[\033[35m\]"
+VIOLET="\[\033[01;35m\]"
+CYAN="\[\033[36m\]"
+BASE1="\[\033[01;36m\]"
+BASE2="\[\033[37m\]"
+BASE3="\[\033[01;37m\]"
+
 if [ $HOSTNAME == "nomad" ]
 then
     workstation="true"
@@ -37,7 +56,6 @@ fi
 
 case "$os_string" in
 SunOS)
-    echo "Setting SunOS specific profile options"
     PATH=/usr/sfw/bin:/opt/csw/bin:/opt/csw/sbin:$PATH:/usr/ucb
     export JAVA_HOME=/usr/j2se
     alias egrep=/usr/sfw/bin/gegrep
@@ -52,7 +70,6 @@ SunOS)
     fi
     ;;
 Linux)
-    echo "Setting Linux specific profile options"
     if [ -e /usr/lib/jvm/java ]
     then
         export JAVA_HOME=/usr/lib/jvm/java
@@ -70,7 +87,7 @@ Linux)
 esac
 
 # Set up a useful prompt
-PS1="[\[\e[1;33m\]$os_string\[\e[0m\]][\[\e[1;34m\]\w\[\e[0m]\]\n\[\e[1;32m\]\u\[\e[0m\]@\[\e[1;34m\]\h\[\e[0m\] \$ "
+PS1="${NOCOLOR}[${GREEN}$os_string${NOCOLOR}][${BLUE}\w${NOCOLOR}]\n${YELLOW}\u${NOCOLOR}@${BLUE}\h${NOCOLOR} \$ "
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
@@ -83,7 +100,7 @@ esac
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
-    eval "`dircolors -b`"
+    eval `dircolors ~/.dircolors`
     alias ls='ls --color=auto'
     alias egrep='egrep --color=auto'
 fi
