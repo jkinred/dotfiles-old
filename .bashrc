@@ -60,14 +60,7 @@ SunOS)
     export JAVA_HOME=/usr/j2se
     alias egrep=/usr/sfw/bin/gegrep
     alias grep=/usr/sfw/bin/ggrep
-    # Allow Vim to look pretty
-    export TERMINFO=~/.terminfo
-    if [ -e $TERMINFO/x/xterm-256color ]
-    then
-        export TERM=xterm-256color
-    else
-        export TERM=xtermc
-    fi
+    export TERM=xtermc
     ;;
 Linux)
     if [ -e /usr/lib/jvm/java ]
@@ -75,12 +68,7 @@ Linux)
         export JAVA_HOME=/usr/lib/jvm/java
         PATH=$PATH:$JAVA_HOME/bin
     fi
-    if [ -e /usr/share/terminfo/x/xterm?256color ]
-    then
-        export TERM=xterm-256color
-    else
-        export TERM=xterm-color
-    fi
+    export TERM=xterm-color
     # Linux specific aliases
     alias listening='netstat --numeric --listening --inet --inet6'
     ;;
