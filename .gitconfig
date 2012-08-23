@@ -1,0 +1,5 @@
+[user]
+	name = Jonathan Kinred
+	email = jonathan.kinred@team.telstra.com
+[http]
+	sslVerify = false

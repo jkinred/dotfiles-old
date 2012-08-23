@@ -1,0 +1,13 @@
+[auth]
+bitbucket.prefix = bitbucket.org
+bitbucket.username = jkinred
+
+[ui]
+username = Jonathan Kinred <jonathan.kinred@gmail.com>
+merge = kdiff3
+
+#[http_proxy]
+#host = http://d356336.wg.dir.telstra.com:3128/
+
+[extensions]
+hgext.bookmarks =
