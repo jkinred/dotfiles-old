@@ -60,7 +60,6 @@ SunOS)
     export JAVA_HOME=/usr/j2se
     alias egrep=/usr/sfw/bin/gegrep
     alias grep=/usr/sfw/bin/ggrep
-    export TERM=xtermc
     ;;
 Linux)
     if [ -e /usr/lib/jvm/java ]
@@ -68,7 +67,6 @@ Linux)
         export JAVA_HOME=/usr/lib/jvm/java
         PATH=$PATH:$JAVA_HOME/bin
     fi
-    export TERM=xterm-color
     # Linux specific aliases
     alias listening='netstat --numeric --listening --inet --inet6'
     ;;
