@@ -114,6 +114,8 @@ then
     alias gopuppet='cd ~/workspace/Work/puppet'
     alias ipython="python -c 'import IPython; IPython.embed()'"
     alias tree="tree --charset=ascii"
+    alias rna="setarch i686 firefox -P VPN"
+    alias tmux="TERM=screen-256color tmux"
     export PYTHONPATH=$HOME/projects/Personal/psphere
 fi
 
