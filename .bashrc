@@ -111,11 +111,12 @@ alias set_proxy='export http_proxy=http://d356336.wg.dir.telstra.com:3128/ https
 if [ $workstation == "true" ]
 then
     alias gopsphere='cd ~/workspace/Personal/psphere'
-    alias gopuppet='cd ~/workspace/Work/puppet'
+    alias gopuppet='cd ~/workspace/puppet'
+    alias goiap='cd ~/workspace/puppet/iap'
     alias ipython="python -c 'import IPython; IPython.embed()'"
     alias tree="tree --charset=ascii"
     alias rna="setarch i686 firefox -P VPN"
-    alias tmux="TERM=screen-256color tmux"
+    alias tmux="TERM=screen-256color tmux -2"
     export PYTHONPATH=$HOME/projects/Personal/psphere
 fi
 
