@@ -20,7 +20,7 @@ BASE3="\[\033[01;37m\]"
 if [ $HOSTNAME == "nomad" ]
 then
     workstation="true"
-elif [ $HOSTNAME == "d356336" ]
+elif [ $HOSTNAME == "d356336.wg.dir.telstra.com" ]
 then
     workstation="true"
 else
