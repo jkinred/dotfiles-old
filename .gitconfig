@@ -3,3 +3,5 @@
 	email = jonathan.kinred@team.telstra.com
 [http]
 	sslVerify = false
+[push]
+	default = simple
