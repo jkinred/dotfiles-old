@@ -23,6 +23,10 @@ Bundle 'wincent/Command-T'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'Rykka/riv.vim'
 
+if !has("ruby")
+    let g:LustyJugglerSuppressRubyWarning = 1
+endif
+
 " Tagbar isn't supported on vim < 7.0.167
 "if v:version == 700 && !has('patch167')                                                               
 "    call add(g:pathogen_disabled, 'tagbar')
