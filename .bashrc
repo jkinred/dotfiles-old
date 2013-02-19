@@ -128,5 +128,6 @@ then
 fi
 #source /etc/bash_completion.d/virtualenvwrapper
 
-export PATH
+export PATH="$HOME/.rbenv/bin:$PATH"
 export PS1
+eval "$(rbenv init -)"
