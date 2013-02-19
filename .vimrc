@@ -22,13 +22,14 @@ Bundle 'altercation/vim-colors-solarized'
 Bundle 'wincent/Command-T'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'Rykka/riv.vim'
+Bundle 'scrooloose/nerdtree'
 
 if !has("ruby")
     let g:LustyJugglerSuppressRubyWarning = 1
 endif
 
 " Tagbar isn't supported on vim < 7.0.167
-"if v:version == 700 && !has('patch167')                                                               
+"if v:version == 700 && !has('patch167')
 "    call add(g:pathogen_disabled, 'tagbar')
 "    nnoremap <leader>l :TlistToggle<CR>
 "else
@@ -168,9 +169,13 @@ nnoremap <F2> :set nonumber!<CR>:set foldcolumn=0<CR>
 set pastetoggle=<F3>
 map T <Plug>TaskList
 map <Leader>b :LustyBufferExplorer<CR>
+map <Leader>d :TagbarToggle<CR>
 map <Leader>m :call VimuxRunCommand("
+map <Leader>n :NERDTreeToggle<CR>
+map <C-h> <C-w>h
+map <C-l> <C-w>l
 
-" XML editing options 
+" XML editing options
 autocmd FileType xml set tabstop=2
 autocmd FileType xml set shiftwidth=2
 autocmd FileType xml set softtabstop=2
@@ -180,3 +185,6 @@ if has("gui_running")
     map <S-Insert> <MiddleMouse>
     map! <S-Insert> <MiddleMouse>
 endif
+
+" Ignore compiled files
+set wildignore=*.o,*~,*.pyc
