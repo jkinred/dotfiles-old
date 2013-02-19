@@ -118,11 +118,14 @@ then
     alias rna="setarch i686 firefox -P VPN"
     alias tmux="TERM=screen-256color tmux -2"
     alias btmuz='pactl load-module module-loopback source=bluez_source.90_21_55_A2_18_44 sink=alsa_output.usb-Ether_Electronics_Co.__LTD_Audioengine_W3_20120611002-00-W3.analog-stereo'
-    export PYTHONPATH=$HOME/projects/Personal/psphere
 fi
 
-
-#WORKON_HOME=$HOME/.virtualenvs
+PROJECT_HOME=$HOME/workspace
+WORKON_HOME=$PROJECT_HOME/virtualenvs
+if [ -e /usr/bin/virtualenvwrapper.sh ]
+then
+    source /usr/bin/virtualenvwrapper.sh
+fi
 #source /etc/bash_completion.d/virtualenvwrapper
 
 export PATH
