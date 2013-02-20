@@ -109,6 +109,7 @@ set expandtab
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
+set shiftround
 set autoindent
 set sessionoptions=blank,buffers,curdir,folds,globals,help,localoptions,options,resize,tabpages,winsize,winpos
 
@@ -165,13 +166,14 @@ autocmd FileType text setlocal spell spelllang=en_au
 " Generic key bindings
 nnoremap <space> za
 vnoremap <space> zf
-nnoremap <F2> :set nonumber!<CR>:set foldcolumn=0<CR>
-set pastetoggle=<F3>
+nnoremap <F3> :set nonumber!<CR>:set foldcolumn=0<CR>
+set pastetoggle=<F2>
 map T <Plug>TaskList
 map <Leader>b :LustyBufferExplorer<CR>
 map <Leader>d :TagbarToggle<CR>
 map <Leader>m :call VimuxRunCommand("
 map <Leader>n :NERDTreeToggle<CR>
+map <Leader>g :LustyBufferGrep<CR>
 map <C-h> <C-w>h
 map <C-l> <C-w>l
 
@@ -188,3 +190,7 @@ endif
 
 " Ignore compiled files
 set wildignore=*.o,*~,*.pyc
+let NERDTreeIgnore = ['\.pyc$']
+set list
+set listchars=tab:>.,trail:.,extends:#,nbsp:.
+nmap <silent> ,/ :nohlsearch<CR>
