@@ -5,6 +5,7 @@ filetype off
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
+Bundle 'gmarik/vundle'
 Bundle 'tpope/vim-fugitive'
 Bundle 'vim-scripts/TaskList.vim'
 Bundle 'ervandew/supertab'
@@ -21,7 +22,7 @@ Bundle 'sjbach/lusty'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'wincent/Command-T'
 Bundle 'vim-ruby/vim-ruby'
-Bundle 'Rykka/riv.vim'
+"Bundle 'Rykka/riv.vim'
 Bundle 'scrooloose/nerdtree'
 
 if !has("ruby")
@@ -88,14 +89,13 @@ set hidden             " Hide buffers when they are abandoned
 set cursorline          " Underline the current line
 set ls=2                " Show the statusline at the bottom
 set history=111         " Restore 111 things from viminfo
-set viminfo=%,\"4,'4,/111,:111,h,f0
-"           |  |  |  |    |    | +file marks 0-9,A-Z 0=NOT stored
-"           |  |  |  |    |    +disable 'hlsearch' loading viminfo
-"           |  |  |  |    +command-line history saved
-"           |  |  |  +search history saved
-"           |  |  +files marks saved
-"           |  +lines saved each register (old name for <, vi6.2)
-"           +save/restore buffer list
+set viminfo=\"4,'4,/111,:111,h,f0
+"            |  |  |    |    | +file marks 0-9,A-Z 0=NOT stored
+"            |  |  |    |    +disable 'hlsearch' loading viminfo
+"            |  |  |    +command-line history saved
+"            |  |  +search history saved
+"            |  +files marks saved
+"            +lines saved each register (old name for <, vi6.2)
 "
 if &t_Co > 2 || has("gui_running")
   syntax on
@@ -141,6 +141,10 @@ let Tlist_WinWidth = 40
 " ------
 let g:tagbar_autofocus = 1
 
+" NERDTree
+" --------
+let NERDTreeIgnore = ['\.pyc$']
+
 " Python
 " ------
 autocmd FileType python set omnifunc=pythoncomplete#Complete
@@ -164,18 +168,32 @@ autocmd FileType rst setlocal spell spelllang=en_au
 autocmd FileType text setlocal spell spelllang=en_au
 
 " Generic key bindings
+" Use space for folding
 nnoremap <space> za
 vnoremap <space> zf
+" Toggle line numbers
 nnoremap <F3> :set nonumber!<CR>:set foldcolumn=0<CR>
+" Toggle paste mode
 set pastetoggle=<F2>
+" Navigate left and right between windows
+map <C-h> <C-w>h
+map <C-l> <C-w>l
+" Turn off search highlighting
+nmap <silent> <Leader>/ :nohlsearch<CR>
+" Navigate quickfix errors
+nnoremap cn :cnext<CR>
+noremap cp :cprevious<CR>
+nnoremap qf :cwindow<CR>
+nnoremap <Leader><Leader> :b#<CR>
+
+" Key bindings for addons
+" Bring up the task list
 map T <Plug>TaskList
 map <Leader>b :LustyBufferExplorer<CR>
 map <Leader>d :TagbarToggle<CR>
 map <Leader>m :call VimuxRunCommand("
 map <Leader>n :NERDTreeToggle<CR>
 map <Leader>g :LustyBufferGrep<CR>
-map <C-h> <C-w>h
-map <C-l> <C-w>l
 
 " XML editing options
 autocmd FileType xml set tabstop=2
@@ -190,7 +208,12 @@ endif
 
 " Ignore compiled files
 set wildignore=*.o,*~,*.pyc
-let NERDTreeIgnore = ['\.pyc$']
+" Display punctuation marks for cleaner code
 set list
 set listchars=tab:>.,trail:.,extends:#,nbsp:.
-nmap <silent> ,/ :nohlsearch<CR>
+
+autocmd FileType *
+\ if &omnifunc != '' |
+\   call SuperTabChain(&omnifunc, "<c-p>") |
+\   call SuperTabSetDefaultCompletionType("<c-x><c-u>") |
+\ endif
