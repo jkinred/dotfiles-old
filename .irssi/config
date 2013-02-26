@@ -5,33 +5,25 @@ servers = (
     port = "6667";
     use_ssl = "no";
     ssl_verify = "no";
-    autoconnect = "yes";
   },
   {
     address = "irc.freenode.net";
     chatnet = "FreeNode";
-    port = "6667";
-    use_ssl = "no";
-    ssl_verify = "no";
+    port = "6697";
+    use_ssl = "yes";
+    ssl_verify = "yes";
+    ssl_capath = "~/.irssi/certs";
+    ssl_cert = "~/.irssi/certs/fruers.pem";
   }
 );
 
 chatnets = {
   Telstra = { type = "IRC"; };
-  FreeNode = {
-    type = "IRC";
-    nick = "fruers";
-    autosendcmd = "/^msg nickserv IDENTIFY nonono";
-    proxy_address = "d356336.wg.dir.telstra.com";
-    proxy_port = "3128";
-    proxy_string = "CONNECT %s:%d HTTP/1.0\012\012";
-    use_proxy = "yes";
-  };
+  FreeNode = { type = "IRC"; nick = "fruers"; };
 };
 
-channels = (
-  { name = "#tech"; chatnet = "Telstra"; autojoin = "Yes"; },
-  { name = "#puppet"; chatnet = "FreeNode"; autojoin = "Yes"; }
+channels = ( 
+  { name = "#tech"; chatnet = "Telstra"; autojoin = "Yes"; }
 );
 
 aliases = {
