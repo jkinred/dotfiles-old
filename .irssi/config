@@ -186,7 +186,15 @@ statusbar = {
   };
 };
 settings = {
-  core = { real_name = "Jonathan K"; user_name = "Jon"; nick = "Jon"; };
+  core = {
+    real_name = "Jonathan K";
+    user_name = "Jon";
+    nick = "Jon";
+    proxy_address = "d356336.wg.dir.telstra.com";
+    proxy_port = "3128";
+    proxy_string = "CONNECT %s:%d HTTP/1.0\012\012";
+    use_proxy = "no";
+  };
   "fe-text" = { actlist_sort = "refnum"; };
   "fe-common/core" = {
     # Solarized
