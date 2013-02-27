@@ -142,6 +142,8 @@ statusbar = {
         act = { priority = "10"; };
         more = { priority = "-1"; alignment = "right"; };
         barend = { priority = "100"; alignment = "right"; };
+        vim_mode = { };
+        vim_windows = { };
       };
     };
 
