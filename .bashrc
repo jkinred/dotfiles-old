@@ -91,11 +91,11 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
-less=`which less`
-if [ -x "$less" ]; then
-    PAGER=$less
-fi
-export PAGER
+#less=`which less`
+#if [ -x "$less" ]; then
+#    PAGER=$less
+#fi
+#export PAGER
 
 EDITOR=/bin/vi
 vim=`which vim`
