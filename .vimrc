@@ -211,6 +211,8 @@ set wildignore=*.o,*~,*.pyc
 " Display punctuation marks for cleaner code
 set list
 set listchars=tab:>.,trail:.,extends:#,nbsp:.
+" Keep at least two lines of context at top and bottom of screen
+set scrolloff=2
 
 autocmd FileType *
 \ if &omnifunc != '' |
