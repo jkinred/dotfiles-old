@@ -18,16 +18,16 @@ Bundle 'embear/vim-gnupg'
 Bundle 'majutsushi/tagbar'
 Bundle 'scrooloose/syntastic'
 Bundle 'benmills/vimux'
-Bundle 'sjbach/lusty'
+"Bundle 'sjbach/lusty'
 Bundle 'altercation/vim-colors-solarized'
-Bundle 'wincent/Command-T'
+"Bundle 'wincent/Command-T'
 Bundle 'vim-ruby/vim-ruby'
 "Bundle 'Rykka/riv.vim'
 Bundle 'scrooloose/nerdtree'
-
-if !has("ruby")
-    let g:LustyJugglerSuppressRubyWarning = 1
-endif
+Bundle 'kien/ctrlp.vim'
+Bundle 'mileszs/ack.vim'
+Bundle 'reinh/vim-makegreen'
+Bundle 'olethanh/Vim-nosecompiler'
 
 " Tagbar isn't supported on vim < 7.0.167
 "if v:version == 700 && !has('patch167')
@@ -53,8 +53,7 @@ endif
 "    vim.command("call add(g:pathogen_disabled, 'pyflakes-pathogen')")
 "EOF
 "endif
-"
-"call pathogen#infect()
+
 let mapleader=","
 
 if has("autocmd")
@@ -89,6 +88,7 @@ set hidden             " Hide buffers when they are abandoned
 set cursorline          " Underline the current line
 set ls=2                " Show the statusline at the bottom
 set history=111         " Restore 111 things from viminfo
+set statusline=[%n]\ %<%.99f\ %h%w%m%r%y%{fugitive#statusline()}%#ErrorMsg#%{SyntasticStatuslineFlag()}%*%=%-14.(%l,%c%V%)\ %P
 set viminfo=\"4,'4,/111,:111,h,f0
 "            |  |  |    |    | +file marks 0-9,A-Z 0=NOT stored
 "            |  |  |    |    +disable 'hlsearch' loading viminfo
@@ -113,30 +113,6 @@ set shiftround
 set autoindent
 set sessionoptions=blank,buffers,curdir,folds,globals,help,localoptions,options,resize,tabpages,winsize,winpos
 
-" MiniBufExpl
-" -----------
-let g:miniBufExplMapWindowNavVim = 1
-let g:miniBufExplMapWindowNavArrows = 1
-let g:miniBufExplMapCTabSwitchBufs = 1
-let g:miniBufExplModSelTarget = 1
-let g:miniBufExplTabWrap = 1 " make tabs show complete (no broken on two lines)
-let g:miniBufExplUseSingleClick = 1 " If you would like to single click on tabs rather than double clicking on them to goto the selected buffer.
-
-" --------------------
-" TagList
-" --------------------
-let Tlist_Show_One_File = 1 " Displaying tags for only one file~
-let Tlist_Exist_OnlyWindow = 1 " if you are the last, kill yourself
-let Tlist_Use_Right_Window = 1 " split to the right side of the screen
-let Tlist_Sort_Type = "order" " sort by order or name
-let Tlist_Display_Prototype = 0 " do not show prototypes and not tags in the taglist window.
-let Tlist_Compart_Format = 1 " Remove extra information and blank lines from the taglist window.
-let Tlist_GainFocus_On_ToggleOpen = 1 " Jump to taglist window on open.
-let Tlist_Display_Tag_Scope = 1 " Show tag scope next to the tag name.
-let Tlist_Close_On_Select = 1 " Close the taglist window when a file or tag is selected.
-let Tlist_Enable_Fold_Column = 0 " Don't Show the fold indicator column in the taglist window.
-let Tlist_WinWidth = 40
-
 " Tagbar
 " ------
 let g:tagbar_autofocus = 1
@@ -153,6 +129,7 @@ let g:SuperTabDefaultCompletionType = "context"
 "Highlight as error when chars go past column 79
 autocmd FileType python highlight OverLength ctermbg=red ctermfg=white guibg=#592929
 autocmd FileType python match OverLength /\%80v.*/
+autocmd FileType python compiler nose
 
 " Ruby
 " ------
@@ -184,16 +161,19 @@ nmap <silent> <Leader>/ :nohlsearch<CR>
 nnoremap cn :cnext<CR>
 noremap cp :cprevious<CR>
 nnoremap qf :cwindow<CR>
-nnoremap <Leader><Leader> :b#<CR>
+nnoremap <Leader>j :b#<CR>
 
 " Key bindings for addons
 " Bring up the task list
 map T <Plug>TaskList
-map <Leader>b :LustyBufferExplorer<CR>
+"map <Leader>b :LustyBufferExplorer<CR>
+map <Leader>b :CtrlPBuffer<CR>
 map <Leader>d :TagbarToggle<CR>
 map <Leader>m :call VimuxRunCommand("
 map <Leader>n :NERDTreeToggle<CR>
-map <Leader>g :LustyBufferGrep<CR>
+map <Leader>g :LAck! 
+
+let g:ctrlp_map = '<Leader>t'
 
 " XML editing options
 autocmd FileType xml set tabstop=2
@@ -219,3 +199,5 @@ autocmd FileType *
 \   call SuperTabChain(&omnifunc, "<c-p>") |
 \   call SuperTabSetDefaultCompletionType("<c-x><c-u>") |
 \ endif
+
+let g:pyflakes_use_quickfix = 0
