@@ -110,9 +110,14 @@ alias set_proxy='export http_proxy=http://d356336.wg.dir.telstra.com:3128/ https
 # Settings that are only relevant on workstations
 if [ $workstation == "true" ]
 then
+    alias goworkspace='cd ~/workspace'
     alias gopsphere='cd ~/workspace/Personal/psphere'
     alias gopuppet='cd ~/workspace/puppet-parent'
+    alias gojira='cd ~/workspace/telstra-jira-plugin/plugins'
+    alias gogitolite='cd ~/workspace/gitolite-admin'
     alias goiap='cd ~/workspace/puppet-parent/iap'
+    alias gointernal='cd ~/workspace/puppet-parent/internal'
+    alias gobpvas='cd ~/workspace/puppet-parent/iap'
     alias ipython="python -c 'import IPython; IPython.embed()'"
     alias tree="tree --charset=ascii"
     alias rna="setarch i686 firefox -no-remote -P VPN"
@@ -129,6 +134,11 @@ then
 fi
 #source /etc/bash_completion.d/virtualenvwrapper
 
-export PATH="$HOME/.rbenv/bin:$PATH"
 export PS1
+
+# Add rbenv stuff
+export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
+
+# Cache packages that pip downloads
+export PIP_DOWNLOAD_CACHE=~/.pip/cache
