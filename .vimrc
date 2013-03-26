@@ -18,16 +18,21 @@ Bundle 'embear/vim-gnupg'
 Bundle 'majutsushi/tagbar'
 Bundle 'scrooloose/syntastic'
 Bundle 'benmills/vimux'
-"Bundle 'sjbach/lusty'
 Bundle 'altercation/vim-colors-solarized'
-"Bundle 'wincent/Command-T'
 Bundle 'vim-ruby/vim-ruby'
-"Bundle 'Rykka/riv.vim'
 Bundle 'scrooloose/nerdtree'
 Bundle 'kien/ctrlp.vim'
 Bundle 'mileszs/ack.vim'
 Bundle 'reinh/vim-makegreen'
 Bundle 'olethanh/Vim-nosecompiler'
+Bundle 'MarcWeber/vim-addon-mw-utils'
+Bundle 'tomtom/tlib_vim'
+Bundle 'jkinred/snipmate-snippets'
+Bundle 'garbas/vim-snipmate'
+"Bundle 'sjbach/lusty'
+"Bundle 'wincent/Command-T'
+"Bundle 'Rykka/riv.vim'
+
 
 " Tagbar isn't supported on vim < 7.0.167
 "if v:version == 700 && !has('patch167')
@@ -170,6 +175,7 @@ map T <Plug>TaskList
 map <Leader>b :CtrlPBuffer<CR>
 map <Leader>d :TagbarToggle<CR>
 map <Leader>m :call VimuxRunCommand("
+map <Leader>mm :VimuxRunLastCommand<CR>
 map <Leader>n :NERDTreeToggle<CR>
 map <Leader>g :LAck! 
 
@@ -187,7 +193,8 @@ if has("gui_running")
 endif
 
 " Ignore compiled files
-set wildignore=*.o,*~,*.pyc
+set wildignore=*.o,*~,*.pyc,*.class
+let g:ctrlp_custom_ignore = { 'dir': 'target\|itam' }
 " Display punctuation marks for cleaner code
 set list
 set listchars=tab:>.,trail:.,extends:#,nbsp:.
