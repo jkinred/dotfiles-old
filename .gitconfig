@@ -5,3 +5,7 @@
 	sslVerify = false
 [push]
 	default = simple
+[color]
+	diff = auto
+	status = auto
+	branch = auto
