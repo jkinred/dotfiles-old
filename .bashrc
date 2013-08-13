@@ -117,7 +117,8 @@ then
     alias gogitolite='cd ~/workspace/gitolite-admin'
     alias goiap='cd ~/workspace/puppet-parent/iap'
     alias gointernal='cd ~/workspace/puppet-parent/internal'
-    alias gobpvas='cd ~/workspace/puppet-parent/iap'
+    alias gobpvas='cd ~/workspace/puppet-parent/bpvas'
+    alias gotoppoc='cd ~/workspace/puppet-parent/toppoc'
     alias ipython="python -c 'import IPython; IPython.embed()'"
     alias tree="tree --charset=ascii"
     alias rna="setarch i686 firefox -no-remote -P VPN"
