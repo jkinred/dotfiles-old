@@ -135,10 +135,15 @@ let g:SuperTabDefaultCompletionType = "context"
 autocmd FileType python highlight OverLength ctermbg=red ctermfg=white guibg=#592929
 autocmd FileType python match OverLength /\%80v.*/
 autocmd FileType python compiler nose
+autocmd FileType python set expandtab tabstop=4 shiftwidth=4 softtabstop=4 autoindent
 
 " Ruby
 " ------
 autocmd FileType ruby set expandtab tabstop=2 shiftwidth=2 softtabstop=2 autoindent
+
+" HTML
+" ----
+autocmd FileType htmldjango set expandtab tabstop=2 shiftwidth=2 softtabstop=2 autoindent
 
 " If you prefer the Omni-Completion tip window to close when a selection is
 " made, these lines close it on movement in insert mode or when leaving
