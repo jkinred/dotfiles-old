@@ -119,6 +119,7 @@ then
     alias gointernal='cd ~/workspace/puppet-parent/internal'
     alias gobpvas='cd ~/workspace/puppet-parent/bpvas'
     alias gotoppoc='cd ~/workspace/puppet-parent/toppoc'
+    alias gomedia='cd ~/workspace/puppet-parent/media'
     alias ipython="python -c 'import IPython; IPython.embed()'"
     alias tree="tree --charset=ascii"
     alias rna="setarch i686 firefox -no-remote -P VPN"
