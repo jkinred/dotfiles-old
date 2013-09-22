@@ -1,0 +1,5 @@
+--ignore-dir=coverage_report
+--ignore-dir=.tox
+--ignore-dir=build
+--ignore-dir=.gems
+--ignore-dir=.tmp
