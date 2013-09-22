@@ -2,4 +2,5 @@
 --ignore-dir=.tox
 --ignore-dir=build
 --ignore-dir=.gems
+--ignore-dir=.bin
 --ignore-dir=.tmp
