@@ -154,6 +154,8 @@ autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 autocmd FileType rst setlocal spell spelllang=en_au
 autocmd FileType text setlocal spell spelllang=en_au
 
+autocmd BufNewFile,BufRead *.gradle setf groovy
+
 " Generic key bindings
 " Use space for folding
 nnoremap <space> za
