@@ -145,6 +145,10 @@ autocmd FileType ruby set expandtab tabstop=2 shiftwidth=2 softtabstop=2 autoind
 " ----
 autocmd FileType htmldjango set expandtab tabstop=2 shiftwidth=2 softtabstop=2 autoindent
 
+" YAML
+" ----
+autocmd FileType yaml set expandtab tabstop=2 shiftwidth=2 softtabstop=2 autoindent
+
 " If you prefer the Omni-Completion tip window to close when a selection is
 " made, these lines close it on movement in insert mode or when leaving
 " insert mode
