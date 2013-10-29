@@ -1,0 +1,3 @@
+# GNOME Shell Overview via mouse
+"xdotool key Super"
+release + b:10
