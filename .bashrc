@@ -141,6 +141,7 @@ export PS1
 # Add rbenv stuff
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
+export PATH=".bin:$PATH"
 
 # Cache packages that pip downloads
 export PIP_DOWNLOAD_CACHE=~/.pip/cache
