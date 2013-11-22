@@ -115,11 +115,12 @@ then
     alias gopuppet='cd ~/workspace/puppet-parent'
     alias gojira='cd ~/workspace/telstra-jira-plugin/plugins'
     alias gogitolite='cd ~/workspace/gitolite-admin'
-    alias goiap='cd ~/workspace/puppet-parent/iap'
-    alias gointernal='cd ~/workspace/puppet-parent/internal'
-    alias gobpvas='cd ~/workspace/puppet-parent/bpvas'
-    alias gotoppoc='cd ~/workspace/puppet-parent/toppoc'
-    alias gomedia='cd ~/workspace/puppet-parent/media'
+    alias goiap='cd ~/workspace/puppet-parent/sites/iap'
+    alias gointernal='cd ~/workspace/puppet-parent/sites/internal'
+    alias gobpvas='cd ~/workspace/puppet-parent/sites/bpvas'
+    alias gotoppoc='cd ~/workspace/puppet-parent/sites/toppoc'
+    alias gomedia='cd ~/workspace/puppet-parent/sites/media'
+    alias gonrlaws='cd ~/workspace/puppet-parent/sites/nrlaws'
     alias ipython="python -c 'import IPython; IPython.embed()'"
     alias tree="tree --charset=ascii"
     alias rna="setarch i686 firefox -no-remote -P VPN"
