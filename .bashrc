@@ -126,6 +126,7 @@ then
     alias gotoppoc='cd ~/workspace/puppet-parent/sites/toppoc'
     alias gomedia='cd ~/workspace/puppet-parent/sites/media'
     alias gonrlaws='cd ~/workspace/puppet-parent/sites/nrlaws'
+    alias gomediaX='cd ~/workspace/puppet-parent/sites/mediaX'
     alias ipython="python -c 'import IPython; IPython.embed()'"
     alias tree="tree --charset=ascii"
     alias rna="setarch i686 firefox -no-remote -P VPN"
@@ -155,3 +156,9 @@ export PATH=".bin:$PATH"
 
 # Cache packages that pip downloads
 export PIP_DOWNLOAD_CACHE=~/.pip/cache
+
+source ~/workspace/ssh-find-agent/ssh-find-agent.bash
+if ! test $SSH_AUTH_SOCK
+then
+    set_ssh_agent_socket
+fi
