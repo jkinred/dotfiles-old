@@ -157,8 +157,11 @@ export PATH=".bin:$PATH"
 # Cache packages that pip downloads
 export PIP_DOWNLOAD_CACHE=~/.pip/cache
 
-source ~/workspace/ssh-find-agent/ssh-find-agent.bash
-if ! test $SSH_AUTH_SOCK
+if [ -f ~/workspace/ssh-find-agent/ssh-find-agent.bash ]
 then
-    set_ssh_agent_socket
+    source ~/workspace/ssh-find-agent/ssh-find-agent.bash
+    if ! test $SSH_AUTH_SOCK
+    then
+        set_ssh_agent_socket
+    fi
 fi
