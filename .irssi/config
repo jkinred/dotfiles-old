@@ -35,7 +35,7 @@ chatnets = {
   FreeNode = { type = "IRC"; nick = "fruers"; };
 };
 
-channels = (
+channels = ( 
   { name = "#tech"; chatnet = "Telstra"; autojoin = "Yes"; }
 );
 
@@ -224,7 +224,8 @@ settings = {
   );
 };
 ignores = (
-  { level = "JOINS PARTS QUITS MODES"; channels = ( "&bitlbee" ); }
+  { level = "JOINS PARTS QUITS MODES"; channels = ( "&bitlbee" ); },
+  { mask = "Angela"; level = "JOINS PARTS QUITS"; }
 );
 windows = {
   1 = { immortal = "yes"; name = "(status)"; level = "ALL"; };
