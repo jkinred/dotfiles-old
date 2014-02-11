@@ -109,7 +109,7 @@ alias set_proxy='export http_proxy=http://d356336.wg.dir.telstra.com:3128/ https
 
 if [ -x /bin/egrep ];
 then
-    alias showbig="du -hs * | egrep '([0-9][0-9][0-9]M|[0-9]G)'"
+    alias showbigfiles="sudo du -hs * | egrep '([0-9][0-9][0-9]M|[0-9]G)'"
 fi
 
 # Settings that are only relevant on workstations
