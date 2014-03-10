@@ -31,6 +31,9 @@ Bundle 'jkinred/snipmate-snippets'
 Bundle 'garbas/vim-snipmate'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'Lokaltog/vim-easymotion'
+Bundle 'plasticboy/vim-markdown'
+Bundle 'tpope/vim-unimpaired'
+Bundle 'nerdtree-ack'
 "Bundle 'sjbach/lusty'
 "Bundle 'wincent/Command-T'
 "Bundle 'Rykka/riv.vim'
@@ -221,3 +224,4 @@ autocmd FileType *
 \ endif
 
 let g:pyflakes_use_quickfix = 0
+autocmd QuickFixCmdPost *grep* cwindow
