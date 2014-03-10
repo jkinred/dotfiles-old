@@ -168,3 +168,9 @@ then
         set_ssh_agent_socket
     fi
 fi
+
+# z is a directory frecency buffer
+if [ -f ~/.dotfiles/z.sh ]
+then
+    source ~/.dotfiles/z.sh
+fi
