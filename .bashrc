@@ -98,10 +98,10 @@ fi
 #export PAGER
 
 EDITOR=/bin/vi
-vim=`which vim`
-if [ -x $vim ]; then
-    alias vi=$vim
-    EDITOR=$vim
+gvim=`which gvim`
+if [ -x $gvim ]; then
+    alias vi="$gvim -v"
+    EDITOR="$gvim -v"
 fi
 export EDITOR
 
