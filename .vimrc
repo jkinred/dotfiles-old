@@ -193,7 +193,7 @@ map <Leader>d :TagbarToggle<CR>
 map <Leader>m :call VimuxRunCommand("
 map <Leader>mm :VimuxRunLastCommand<CR>
 map <Leader>n :NERDTreeToggle<CR>
-map <Leader>g :LAck! 
+map <Leader>g :Ack! 
 
 let g:ctrlp_map = '<Leader>t'
 
