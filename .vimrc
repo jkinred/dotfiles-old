@@ -193,7 +193,7 @@ map <Leader>d :TagbarToggle<CR>
 map <Leader>m :call VimuxRunCommand("
 map <Leader>mm :VimuxRunLastCommand<CR>
 map <Leader>n :NERDTreeToggle<CR>
-map <Leader>g :LAck! 
+map <Leader>g :Ack! 
 
 let g:ctrlp_map = '<Leader>t'
 
@@ -211,6 +211,7 @@ endif
 " Ignore compiled files
 set wildignore=*.o,*~,*.pyc,*.class
 let g:ctrlp_custom_ignore = { 'dir': 'target\|itam' }
+let g:ctrlp_working_path_mode = 0
 " Display punctuation marks for cleaner code
 set list
 set listchars=tab:>.,trail:.,extends:#,nbsp:.
