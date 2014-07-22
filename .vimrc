@@ -9,15 +9,17 @@ Bundle 'gmarik/vundle'
 Bundle 'tpope/vim-fugitive'
 Bundle 'vim-scripts/TaskList.vim'
 Bundle 'ervandew/supertab'
-Bundle 'mitechie/pyflakes-pathogen'
-Bundle 'fs111/pydoc.vim'
-Bundle 'vim-scripts/pep8'
+"Bundle 'mitechie/pyflakes-pathogen'
+"Bundle 'vim-scripts/pep8'
+"Bundle 'nvie/vim-flake8'
+"Bundle 'fs111/pydoc.vim'
+Bundle 'klen/python-mode'
 Bundle 'rodjek/vim-puppet'
 Bundle 'godlygeek/tabular'
 Bundle 'embear/vim-gnupg'
 Bundle 'majutsushi/tagbar'
 Bundle 'scrooloose/syntastic'
-Bundle 'benmills/vimux'
+"Bundle 'benmills/vimux'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'scrooloose/nerdtree'
@@ -27,16 +29,14 @@ Bundle 'reinh/vim-makegreen'
 Bundle 'olethanh/Vim-nosecompiler'
 Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'tomtom/tlib_vim'
-Bundle 'jkinred/snipmate-snippets'
-Bundle 'garbas/vim-snipmate'
-Bundle 'airblade/vim-gitgutter'
-Bundle 'Lokaltog/vim-easymotion'
+"Bundle 'jkinred/snipmate-snippets'
+"Bundle 'garbas/vim-snipmate'
+"Bundle 'airblade/vim-gitgutter'
+"Bundle 'Lokaltog/vim-easymotion'
 Bundle 'plasticboy/vim-markdown'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'nerdtree-ack'
-"Bundle 'sjbach/lusty'
-"Bundle 'wincent/Command-T'
-"Bundle 'Rykka/riv.vim'
+Bundle 'derekwyatt/vim-scala'
 
 
 " Tagbar isn't supported on vim < 7.0.167
@@ -129,7 +129,7 @@ let g:tagbar_autofocus = 1
 
 " NERDTree
 " --------
-let NERDTreeIgnore = ['\.pyc$']
+let NERDTreeIgnore = ['\.pyc$', '\.pyo$', '\.class$']
 
 " Python
 " ------
@@ -137,10 +137,10 @@ autocmd FileType python set omnifunc=pythoncomplete#Complete
 set completeopt=menuone,longest,preview
 let g:SuperTabDefaultCompletionType = "context"
 "Highlight as error when chars go past column 79
-autocmd FileType python highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-autocmd FileType python match OverLength /\%80v.*/
-autocmd FileType python compiler nose
-autocmd FileType python set expandtab tabstop=4 shiftwidth=4 softtabstop=4 autoindent
+"autocmd FileType python highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+"autocmd FileType python match OverLength /\%80v.*/
+"autocmd FileType python compiler nose
+"autocmd FileType python set expandtab tabstop=4 shiftwidth=4 softtabstop=4 autoindent
 
 " Ruby
 " ------
@@ -188,7 +188,6 @@ nnoremap <Leader>j :b#<CR>
 " Bring up the task list
 map T <Plug>TaskList
 "map <Leader>b :LustyBufferExplorer<CR>
-map <Leader>b :CtrlPBuffer<CR>
 map <Leader>d :TagbarToggle<CR>
 map <Leader>m :call VimuxRunCommand("
 map <Leader>mm :VimuxRunLastCommand<CR>
@@ -224,5 +223,48 @@ autocmd FileType *
 \   call SuperTabSetDefaultCompletionType("<c-x><c-u>") |
 \ endif
 
-let g:pyflakes_use_quickfix = 0
+"let g:pyflakes_use_quickfix = 0
+"autocmd BufWritePost *.py call Flake8()
 autocmd QuickFixCmdPost *grep* cwindow
+" Python-mode
+" Activate rope
+" Keys:
+" K             Show python docs
+" <Ctrl-Space>  Rope autocomplete
+" <Ctrl-c>g     Rope goto definition
+" <Ctrl-c>d     Rope show documentation
+" <Ctrl-c>f     Rope find occurrences
+" <Leader>b     Set, unset breakpoint (g:pymode_breakpoint enabled)
+" [[            Jump on previous class or function (normal, visual, operator modes)
+" ]]            Jump on next class or function (normal, visual, operator modes)
+" [M            Jump on previous class or method (normal, visual, operator modes)
+" ]M            Jump on next class or method (normal, visual, operator modes)
+let g:pymode_rope = 1
+
+" Documentation
+let g:pymode_doc = 1
+let g:pymode_doc_key = 'K'
+
+"Linting
+let g:pymode_lint = 1
+let g:pymode_lint_checker = "flake8,pyflakes,pep8,pylint"
+" Auto check on save
+let g:pymode_lint_write = 1
+
+" Support virtualenv
+let g:pymode_virtualenv = 1
+
+" Enable breakpoints plugin
+"let g:pymode_breakpoint = 1
+"let g:pymode_breakpoint_key = '<leader>b'
+
+" syntax highlighting
+let g:pymode_syntax = 1
+let g:pymode_syntax_all = 1
+let g:pymode_syntax_indent_errors = g:pymode_syntax_all
+let g:pymode_syntax_space_errors = g:pymode_syntax_all
+
+" Don't autofold code
+let g:pymode_folding = 0
+autocmd FileType python set nonumber
+autocmd FileType python map <Leader>b :CtrlPBuffer<CR>
