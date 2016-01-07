@@ -1,42 +1,44 @@
 set nocompatible
-
 filetype off
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
-Bundle 'gmarik/vundle'
-Bundle 'tpope/vim-fugitive'
-Bundle 'vim-scripts/TaskList.vim'
-Bundle 'ervandew/supertab'
-"Bundle 'mitechie/pyflakes-pathogen'
-"Bundle 'vim-scripts/pep8'
-"Bundle 'nvie/vim-flake8'
-"Bundle 'fs111/pydoc.vim'
-Bundle 'klen/python-mode'
-Bundle 'rodjek/vim-puppet'
-Bundle 'godlygeek/tabular'
-Bundle 'embear/vim-gnupg'
-Bundle 'majutsushi/tagbar'
-Bundle 'scrooloose/syntastic'
-"Bundle 'benmills/vimux'
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'vim-ruby/vim-ruby'
-Bundle 'scrooloose/nerdtree'
-Bundle 'kien/ctrlp.vim'
-Bundle 'mileszs/ack.vim'
-Bundle 'reinh/vim-makegreen'
-Bundle 'olethanh/Vim-nosecompiler'
-Bundle 'MarcWeber/vim-addon-mw-utils'
-Bundle 'tomtom/tlib_vim'
-"Bundle 'jkinred/snipmate-snippets'
-"Bundle 'garbas/vim-snipmate'
-"Bundle 'airblade/vim-gitgutter'
-"Bundle 'Lokaltog/vim-easymotion'
-Bundle 'plasticboy/vim-markdown'
-Bundle 'tpope/vim-unimpaired'
-Bundle 'nerdtree-ack'
-Bundle 'derekwyatt/vim-scala'
+Plugin 'gmarik/vundle'
+Plugin 'tpope/vim-fugitive'
+Plugin 'vim-scripts/TaskList.vim'
+Plugin 'ervandew/supertab'
+"Plugin 'mitechie/pyflakes-pathogen'
+"Plugin 'vim-scripts/pep8'
+"Plugin 'nvie/vim-flake8'
+"Plugin 'fs111/pydoc.vim'
+Plugin 'klen/python-mode'
+Plugin 'rodjek/vim-puppet'
+Plugin 'godlygeek/tabular'
+Plugin 'embear/vim-gnupg'
+Plugin 'majutsushi/tagbar'
+Plugin 'scrooloose/syntastic'
+"Plugin 'benmills/vimux'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'vim-ruby/vim-ruby'
+Plugin 'scrooloose/nerdtree'
+Plugin 'kien/ctrlp.vim'
+Plugin 'mileszs/ack.vim'
+Plugin 'reinh/vim-makegreen'
+Plugin 'olethanh/Vim-nosecompiler'
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
+"Plugin 'jkinred/snipmate-snippets'
+"Plugin 'garbas/vim-snipmate'
+"Plugin 'airblade/vim-gitgutter'
+"Plugin 'Lokaltog/vim-easymotion'
+Plugin 'plasticboy/vim-markdown'
+Plugin 'tpope/vim-unimpaired'
+Plugin 'nerdtree-ack'
+Plugin 'hashivim/vim-terraform'
+
+call vundle#end()
+filetype plugin indent on
 
 
 " Tagbar isn't supported on vim < 7.0.167
@@ -193,6 +195,7 @@ map <Leader>m :call VimuxRunCommand("
 map <Leader>mm :VimuxRunLastCommand<CR>
 map <Leader>n :NERDTreeToggle<CR>
 map <Leader>g :Ack! 
+map <Leader>b :CtrlPBuffer<CR>
 
 let g:ctrlp_map = '<Leader>t'
 
