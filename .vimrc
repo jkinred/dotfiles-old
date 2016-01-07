@@ -36,7 +36,7 @@ Bundle 'tomtom/tlib_vim'
 Bundle 'plasticboy/vim-markdown'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'nerdtree-ack'
-Bundle 'derekwyatt/vim-scala'
+Bundle 'fatih/vim-go'
 
 
 " Tagbar isn't supported on vim < 7.0.167
@@ -193,6 +193,7 @@ map <Leader>m :call VimuxRunCommand("
 map <Leader>mm :VimuxRunLastCommand<CR>
 map <Leader>n :NERDTreeToggle<CR>
 map <Leader>g :Ack! 
+map <Leader>b :CtrlPBuffer<CR>
 
 let g:ctrlp_map = '<Leader>t'
 
@@ -209,7 +210,7 @@ endif
 
 " Ignore compiled files
 set wildignore=*.o,*~,*.pyc,*.class
-let g:ctrlp_custom_ignore = { 'dir': 'target\|itam' }
+let g:ctrlp_custom_ignore = { 'dir': '\v[\/](target|itam|public)' }
 let g:ctrlp_working_path_mode = 0
 " Display punctuation marks for cleaner code
 set list
@@ -255,8 +256,8 @@ let g:pymode_lint_write = 1
 let g:pymode_virtualenv = 1
 
 " Enable breakpoints plugin
-"let g:pymode_breakpoint = 1
-"let g:pymode_breakpoint_key = '<leader>b'
+" let g:pymode_breakpoint = 0
+" let g:pymode_breakpoint_key = '<leader>b'
 
 " syntax highlighting
 let g:pymode_syntax = 1
@@ -267,4 +268,3 @@ let g:pymode_syntax_space_errors = g:pymode_syntax_all
 " Don't autofold code
 let g:pymode_folding = 0
 autocmd FileType python set nonumber
-autocmd FileType python map <Leader>b :CtrlPBuffer<CR>
