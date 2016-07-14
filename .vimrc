@@ -15,7 +15,7 @@ Plugin 'ervandew/supertab'
 Plugin 'klen/python-mode'
 Plugin 'rodjek/vim-puppet'
 Plugin 'godlygeek/tabular'
-Plugin 'embear/vim-gnupg'
+Plugin 'jamessan/vim-gnupg'
 Plugin 'majutsushi/tagbar'
 Plugin 'scrooloose/syntastic'
 "Plugin 'benmills/vimux'
@@ -36,7 +36,8 @@ Plugin 'plasticboy/vim-markdown'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'nerdtree-ack'
 Plugin 'hashivim/vim-terraform'
-Bundle 'fatih/vim-go'
+Plugin 'fatih/vim-go'
+Plugin 'pearofducks/ansible-vim'
 
 call vundle#end()
 filetype plugin indent on
@@ -75,6 +76,8 @@ endif
 if has("autocmd")
   filetype plugin indent on
 endif
+
+set directory=$HOME/.vim/swapfiles//
 
 "colorscheme candycode
 "colorscheme desert256
@@ -125,6 +128,11 @@ set shiftround
 set autoindent
 set sessionoptions=blank,buffers,curdir,folds,globals,help,localoptions,options,resize,tabpages,winsize,winpos
 
+"
+" GPG
+" ---
+let g:GPGExecutable = "gpg2 --trust-model always"
+
 " Tagbar
 " ------
 let g:tagbar_autofocus = 1
@@ -154,7 +162,7 @@ autocmd FileType htmldjango set expandtab tabstop=2 shiftwidth=2 softtabstop=2 a
 
 " YAML
 " ----
-autocmd FileType yaml set expandtab tabstop=2 shiftwidth=2 softtabstop=2 autoindent
+"autocmd FileType yaml set expandtab tabstop=2 shiftwidth=2 softtabstop=2 autoindent
 
 " If you prefer the Omni-Completion tip window to close when a selection is
 " made, these lines close it on movement in insert mode or when leaving
@@ -203,6 +211,11 @@ let g:ctrlp_map = '<Leader>t'
 autocmd FileType xml set tabstop=2
 autocmd FileType xml set shiftwidth=2
 autocmd FileType xml set softtabstop=2
+
+" Go editing options
+autocmd Filetype go setlocal tabstop=4 shiftwidth=4 softtabstop=4 noexpandtab
+autocmd Filetype go setlocal nolist
+autocmd Filetype go let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
 
 if has("gui_running")
     " Make shift-insert work like in Xterm
@@ -270,3 +283,6 @@ let g:pymode_syntax_space_errors = g:pymode_syntax_all
 " Don't autofold code
 let g:pymode_folding = 0
 autocmd FileType python set nonumber
+
+" Disable markdown folding
+let g:vim_markdown_folding_disabled = 1
