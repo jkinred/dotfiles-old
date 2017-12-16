@@ -1,6 +1,6 @@
 [user]
 	name = Jonathan Kinred
-	email = jonathan.kinred@team.telstra.com
+    email = jonathan.kinred@gmail.com
 [http]
 	sslVerify = false
 [push]
@@ -9,3 +9,11 @@
 	diff = auto
 	status = auto
 	branch = auto
+[core]
+	excludesfile = /home/jonathan/.gitignore
+[branch]
+	autosetuprebase = always
+[credential]
+	helper = cache --timeout=7200
+[credential "https://github.com"]
+    username = jkinred
