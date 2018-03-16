@@ -1,6 +1,6 @@
 # z is a directory frecency buffer
-if [ -f ~/.dotfiles/z.sh ]
+if [ -f ~/workspace/dotfiles/z.sh ]
 then
-    source ~/.dotfiles/z.sh
+    source ~/workspace/dotfiles/z.sh
 fi
 
