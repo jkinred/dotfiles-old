@@ -20,7 +20,7 @@ Plugin 'majutsushi/tagbar'
 Plugin 'scrooloose/syntastic'
 "Plugin 'benmills/vimux'
 Plugin 'altercation/vim-colors-solarized'
-Plugin 'vim-ruby/vim-ruby'
+"Plugin 'vim-ruby/vim-ruby'
 Plugin 'scrooloose/nerdtree'
 Plugin 'kien/ctrlp.vim'
 Plugin 'mileszs/ack.vim'
@@ -37,7 +37,8 @@ Plugin 'tpope/vim-unimpaired'
 Plugin 'nerdtree-ack'
 Plugin 'hashivim/vim-terraform'
 Plugin 'fatih/vim-go'
-Plugin 'pearofducks/ansible-vim'
+Plugin 'saltstack/salt-vim'
+Plugin 'thanethomson/vim-jenkinsfile'
 
 call vundle#end()
 filetype plugin indent on
@@ -79,16 +80,9 @@ endif
 
 set directory=$HOME/.vim/swapfiles//
 
-"colorscheme candycode
-"colorscheme desert256
-"colorscheme fruity
-"colorscheme inkpot
-"colorscheme railscasts
-
 set background=dark
-set t_Co=16
+"set t_Co=16
 colorscheme solarized
-"colorscheme molokai
 
 set wildmode=longest:full
 set wildmenu
@@ -255,7 +249,8 @@ autocmd QuickFixCmdPost *grep* cwindow
 " ]]            Jump on next class or function (normal, visual, operator modes)
 " [M            Jump on previous class or method (normal, visual, operator modes)
 " ]M            Jump on next class or method (normal, visual, operator modes)
-let g:pymode_rope = 1
+let g:pymode_rope = 0
+let g:pymode_rope_lookup_project = 0
 
 " Documentation
 let g:pymode_doc = 1
@@ -271,8 +266,8 @@ let g:pymode_lint_write = 1
 let g:pymode_virtualenv = 1
 
 " Enable breakpoints plugin
-" let g:pymode_breakpoint = 0
-" let g:pymode_breakpoint_key = '<leader>b'
+let g:pymode_breakpoint = 0
+let g:pymode_breakpoint_key = '<leader>0'
 
 " syntax highlighting
 let g:pymode_syntax = 1
@@ -286,3 +281,10 @@ autocmd FileType python set nonumber
 
 " Disable markdown folding
 let g:vim_markdown_folding_disabled = 1
+
+" Remap solarized bgcolor to F4
+call togglebg#map("<F4>")
+
+" Jenkinsfile
+au BufNewFile,BufRead Jenkinsfile* set filetype=groovy
+autocmd FileType groovy set expandtab tabstop=2 shiftwidth=2 softtabstop=2 autoindent

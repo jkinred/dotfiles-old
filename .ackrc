@@ -5,4 +5,5 @@
 --ignore-dir=.bin
 --ignore-dir=.tmp
 --ignore-dir=.bundle
+--ignore-dir=.eggs
 --ignore-dir=vendor
