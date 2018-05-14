@@ -1,3 +1,4 @@
+--ignore-case
 --ignore-dir=coverage_report
 --ignore-dir=.tox
 --ignore-dir=build
@@ -7,3 +8,5 @@
 --ignore-dir=.bundle
 --ignore-dir=.eggs
 --ignore-dir=vendor
+--ignore-file=is:tags
+--type-set=salt:ext:sls,map,jinja
