@@ -1,72 +1,62 @@
 set nocompatible
 filetype off
+set encoding=UTF-8
+set diffopt+=vertical
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
+" Plugins that need to load first
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'tpope/vim-fugitive'
-Plugin 'vim-scripts/TaskList.vim'
-Plugin 'ervandew/supertab'
-"Plugin 'mitechie/pyflakes-pathogen'
-"Plugin 'vim-scripts/pep8'
-"Plugin 'nvie/vim-flake8'
-"Plugin 'fs111/pydoc.vim'
-Plugin 'klen/python-mode'
-Plugin 'rodjek/vim-puppet'
-Plugin 'godlygeek/tabular'
-Plugin 'jamessan/vim-gnupg'
-Plugin 'majutsushi/tagbar'
-Plugin 'scrooloose/syntastic'
-"Plugin 'benmills/vimux'
-Plugin 'altercation/vim-colors-solarized'
-"Plugin 'vim-ruby/vim-ruby'
 Plugin 'scrooloose/nerdtree'
-Plugin 'kien/ctrlp.vim'
-Plugin 'mileszs/ack.vim'
-Plugin 'reinh/vim-makegreen'
-Plugin 'olethanh/Vim-nosecompiler'
+
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'chrisbra/vim-diff-enhanced'
+Plugin 'ervandew/supertab'
+Plugin 'godlygeek/tabular'
+Plugin 'hashivim/vim-terraform'
+Plugin 'jamessan/vim-gnupg'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'majutsushi/tagbar'
 Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'mileszs/ack.vim'
+Plugin 'nerdtree-ack'
+Plugin 'plasticboy/vim-markdown'
+Plugin 'saltstack/salt-vim'
+Plugin 'scrooloose/syntastic'
+Plugin 'thanethomson/vim-jenkinsfile'
 Plugin 'tomtom/tlib_vim'
+Plugin 'tpope/vim-sensible'
+Plugin 'tpope/vim-unimpaired'
+Plugin 'tpope/vim-fugitive'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'vim-scripts/TaskList.vim'
+
+" Plugins on trial
+Plugin 'airblade/vim-gitgutter'
+"Plugin 'davidhalter/jedi-vim'
+Plugin 'gcmt/taboo.vim'
+Plugin 'gregsexton/gitv'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'vim-scripts/YankRing.vim'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
+Plugin 'yggdroot/indentline'
+
+" Useful plugins which are only occasionally needed
+"Plugin 'fatih/vim-go'
+"Plugin 'rodjek/vim-puppet'
+"Plugin 'vim-ruby/vim-ruby'
 "Plugin 'jkinred/snipmate-snippets'
 "Plugin 'garbas/vim-snipmate'
-"Plugin 'airblade/vim-gitgutter'
 "Plugin 'Lokaltog/vim-easymotion'
-Plugin 'plasticboy/vim-markdown'
-Plugin 'tpope/vim-unimpaired'
-Plugin 'nerdtree-ack'
-Plugin 'hashivim/vim-terraform'
-Plugin 'fatih/vim-go'
-Plugin 'saltstack/salt-vim'
-Plugin 'thanethomson/vim-jenkinsfile'
+
+" Plugins that have to be loaded last
+Plugin 'ryanoasis/vim-devicons'
 
 call vundle#end()
 filetype plugin indent on
 
-" Tagbar isn't supported on vim < 7.0.167
-"if v:version == 700 && !has('patch167')
-"    call add(g:pathogen_disabled, 'tagbar')
-"    nnoremap <leader>l :TlistToggle<CR>
-"else
-"    call add(g:pathogen_disabled, 'taglist')
-"    nnoremap <leader>l :TagbarToggle<CR>
-"endif
-"
-"" Disable Taglist if executable not present
-"if !executable('ctags')
-"    call add(g:pathogen_disabled, 'taglist')
-"endif
-"
-"if has("python")
-"" Disable pyflakes if Python version is < 2.5
-"python << EOF
-"import vim
-"import os.path
-"import sys
-"if sys.version_info[:2] < (2, 5):
-"    vim.command("call add(g:pathogen_disabled, 'pyflakes-pathogen')")
-"EOF
-"endif
 
 let mapleader=","
 
@@ -81,7 +71,6 @@ endif
 set directory=$HOME/.vim/swapfiles//
 
 set background=dark
-"set t_Co=16
 colorscheme solarized
 
 set wildmode=longest:full
@@ -133,7 +122,7 @@ let g:tagbar_autofocus = 1
 
 " NERDTree
 " --------
-let NERDTreeIgnore = ['\.pyc$', '\.pyo$', '\.class$']
+let NERDTreeIgnore = ['.*\.egg-info', '__pycache__', '\.pyc$', '\.pyo$', '\.class$']
 
 " Python
 " ------
@@ -173,10 +162,6 @@ autocmd BufNewFile,BufRead *.gradle setf groovy
 " Use space for folding
 nnoremap <space> za
 vnoremap <space> zf
-" Toggle line numbers
-nnoremap <F3> :set nonumber!<CR>:set foldcolumn=0<CR>
-" Toggle paste mode
-set pastetoggle=<F2>
 " Navigate left and right between windows
 map <C-h> <C-w>h
 map <C-l> <C-w>l
@@ -191,15 +176,11 @@ nnoremap <Leader>j :b#<CR>
 " Key bindings for addons
 " Bring up the task list
 map T <Plug>TaskList
-"map <Leader>b :LustyBufferExplorer<CR>
-map <Leader>d :TagbarToggle<CR>
-map <Leader>m :call VimuxRunCommand("
-map <Leader>mm :VimuxRunLastCommand<CR>
+map <Leader>t :TagbarToggle<CR>
 map <Leader>n :NERDTreeToggle<CR>
 map <Leader>g :Ack! 
 map <Leader>b :CtrlPBuffer<CR>
-
-let g:ctrlp_map = '<Leader>t'
+map <Leader>f :CtrlP<CR>
 
 " XML editing options
 autocmd FileType xml set tabstop=2
@@ -211,19 +192,15 @@ autocmd Filetype go setlocal tabstop=4 shiftwidth=4 softtabstop=4 noexpandtab
 autocmd Filetype go setlocal nolist
 autocmd Filetype go let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
 
-if has("gui_running")
-    " Make shift-insert work like in Xterm
-    map <S-Insert> <MiddleMouse>
-    map! <S-Insert> <MiddleMouse>
-endif
-
 " Ignore compiled files
 set wildignore=*.o,*~,*.pyc,*.class
-let g:ctrlp_custom_ignore = { 'dir': '\v[\/](target|itam|public)' }
+let g:ctrlp_custom_ignore = { 'dir': '\v[\/](target|public)' }
 let g:ctrlp_working_path_mode = 0
+
 " Display punctuation marks for cleaner code
 set list
 set listchars=tab:>.,trail:.,extends:#,nbsp:.
+
 " Keep at least two lines of context at top and bottom of screen
 set scrolloff=2
 
@@ -233,58 +210,34 @@ autocmd FileType *
 \   call SuperTabSetDefaultCompletionType("<c-x><c-u>") |
 \ endif
 
-"let g:pyflakes_use_quickfix = 0
-"autocmd BufWritePost *.py call Flake8()
 autocmd QuickFixCmdPost *grep* cwindow
-" Python-mode
-" Activate rope
-" Keys:
-" K             Show python docs
-" <Ctrl-Space>  Rope autocomplete
-" <Ctrl-c>g     Rope goto definition
-" <Ctrl-c>d     Rope show documentation
-" <Ctrl-c>f     Rope find occurrences
-" <Leader>b     Set, unset breakpoint (g:pymode_breakpoint enabled)
-" [[            Jump on previous class or function (normal, visual, operator modes)
-" ]]            Jump on next class or function (normal, visual, operator modes)
-" [M            Jump on previous class or method (normal, visual, operator modes)
-" ]M            Jump on next class or method (normal, visual, operator modes)
-let g:pymode_rope = 0
-let g:pymode_rope_lookup_project = 0
 
-" Documentation
-let g:pymode_doc = 1
-let g:pymode_doc_key = 'K'
-
-"Linting
-let g:pymode_lint = 1
-let g:pymode_lint_checker = "flake8,pyflakes,pep8,pylint"
-" Auto check on save
-let g:pymode_lint_write = 1
-
-" Support virtualenv
-let g:pymode_virtualenv = 1
-
-" Enable breakpoints plugin
-let g:pymode_breakpoint = 0
-let g:pymode_breakpoint_key = '<leader>0'
-
-" syntax highlighting
-let g:pymode_syntax = 1
-let g:pymode_syntax_all = 1
-let g:pymode_syntax_indent_errors = g:pymode_syntax_all
-let g:pymode_syntax_space_errors = g:pymode_syntax_all
-
-" Don't autofold code
-let g:pymode_folding = 0
-autocmd FileType python set nonumber
-
-" Disable markdown folding
+" Markdown configuration
 let g:vim_markdown_folding_disabled = 1
+let g:vim_markdown_conceal = 0
 
-" Remap solarized bgcolor to F4
-call togglebg#map("<F4>")
+" Toggle paste mode
+set pastetoggle=<F2>
+
+" Toggle line numbers
+map <F3> :set nonumber!<CR>:set foldcolumn=0<CR>
+
+" Toggle background between light and dark
+map <F4> :let &background = ( &background == "dark"? "light" : "dark")<CR>
+"call togglebg#map("<F4>")
+
+" Turn off line indent indicators
+map <F5> :IndentLinesToggle<CR>
 
 " Jenkinsfile
 au BufNewFile,BufRead Jenkinsfile* set filetype=groovy
 autocmd FileType groovy set expandtab tabstop=2 shiftwidth=2 softtabstop=2 autoindent
+
+" Ensure YouCompleteMe uses the virtualenv interpreter
+let g:ycm_python_binary_path = 'python'
+
+let g:syntastic_error_symbol = '✘'
+let g:syntastic_warning_symbol = "▲"
+
+nnoremap <silent> <F6> :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
+let g:tlTokenList = ["FIXME", "TODO", "XXX", "NOTE"]
