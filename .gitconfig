@@ -1,6 +1,6 @@
 [user]
 	name = Jonathan Kinred
-    email = jonathan.kinred@gmail.com
+	email = jkinred@linuxfoundation.org
 [http]
 	sslVerify = false
 [push]
@@ -16,4 +16,18 @@
 [credential]
 	helper = /usr/libexec/git-core/git-credential-libsecret
 [credential "https://github.com"]
-    username = jkinred
+	username = jkinred
+[credential "https://github.linuxfoundation.org"]
+	username = jkinred
+[hub]
+	host = github.linuxfoundation.org
+[alias]
+	serve = daemon --verbose --export-all --base-path=.git --reuseaddr --strict-paths .git/
+	switch = !legit switch
+	sync = !legit sync
+	publish = !legit publish
+	unpublish = !legit unpublish
+	undo = !legit undo
+	branches = !legit branches
+[gpg]
+	program = gpg2
